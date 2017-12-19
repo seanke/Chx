@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Chx.Common.DTOs
 {
@@ -14,5 +10,10 @@ namespace Chx.Common.DTOs
     public class Activity
     {
         public string Name { get; set; }
+        public List<ParameterSet> ParameterSets { get; set; }
+        public Activity()
+        {
+            ParameterSets = new List<ParameterSet>();
+        }
     }
 }

@@ -65,8 +65,9 @@
       <DependentUpon>ChxModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DTOs\Activity.cs" />
-    <Compile Include="DTOs\Event.cs" />
+    <Compile Include="DTOs\LogEntry.cs" />
     <Compile Include="DTOs\Job.cs" />
+    <Compile Include="DTOs\ParameterSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
