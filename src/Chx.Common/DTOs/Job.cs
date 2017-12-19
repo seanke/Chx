@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace Chx.Common.DTOs
 {
-    public enum JobType
-    {
-        HttpRequest,
-        Process
-    }
-
     public enum JobStatus
     {
         Unknown,
@@ -23,9 +17,6 @@ namespace Chx.Common.DTOs
 
     public class Job
     {
-        public JobType JobType { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
         public JobStatus JobStatus { get; set; }
     }
 }
