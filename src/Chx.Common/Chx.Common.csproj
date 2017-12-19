@@ -64,6 +64,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ChxModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\Job.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
