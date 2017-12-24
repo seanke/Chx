@@ -5,6 +5,7 @@ namespace Chx.Common.Log
 {
     public enum LogEntryType
     {
+        Unknown,
         JobStarted,
         JobCompleted
     }
