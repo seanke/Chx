@@ -15,7 +15,6 @@ namespace Chx.Tests.Integration
         [InlineData(ActivityStatus.BadParameters, "", "")]
         [InlineData(ActivityStatus.Fail, @"http://google.com", "something that would not be found!!!!!")]
         [InlineData(ActivityStatus.Success, @"http://google.com", "google")]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndSearchFor_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string searchFor)
         {
             //Arrange
@@ -36,7 +35,6 @@ namespace Chx.Tests.Integration
         [InlineData(ActivityStatus.Fail, @"http://google.com", "message")]
         [InlineData(ActivityStatus.Fail, @"http://google.com", "   ")]
         [InlineData(ActivityStatus.Fail, @"http://google.com", null)]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndBody_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string body)
         {
             //Arrange

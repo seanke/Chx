@@ -17,7 +17,9 @@ namespace Chx.Tests.Unit
         [InlineData(ActivityStatus.Success, @"http://uri", "value:header")]
         [InlineData(ActivityStatus.Success, @"http://uri", "value:header:")]
         [InlineData(ActivityStatus.Success, @"http://uri", "value:header:header")]
-        [Trait("Unit", "HttpTest")]
+        [InlineData(ActivityStatus.BadParameters, @"bad uri!!", "value:header")]
+        [InlineData(ActivityStatus.BadParameters, @"", "value:header")]
+        [InlineData(ActivityStatus.BadParameters, @"uri", "value:header")]
         public void Run_WithUriAndHeader_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string header)
         {
             //Arrange
@@ -42,7 +44,6 @@ namespace Chx.Tests.Unit
         [InlineData(ActivityStatus.Success, @"http://uri", "")]
         [InlineData(ActivityStatus.Success, @"http://uri", "POST")]
         [InlineData(ActivityStatus.Success, @"http://uri", "SomeOtherMethod")]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndMethod_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string method)
         {
             //Arrange
@@ -66,7 +67,6 @@ namespace Chx.Tests.Unit
         [InlineData(ActivityStatus.Success, @"http://uri", "")]
         [InlineData(ActivityStatus.Success, @"http://uri", "     ")]
         [InlineData(ActivityStatus.Success, @"http://uri", null)]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndSearchFor_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string searchFor)
         {
             //Arrange
@@ -94,7 +94,6 @@ namespace Chx.Tests.Unit
         [InlineData(ActivityStatus.BadParameters, @"http://uri", "-500")]
         [InlineData(ActivityStatus.BadParameters, @"http://uri", "0")]
         [InlineData(ActivityStatus.Success, @"http://uri", "123456789123456789")]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndTimeout_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string timeout)
         {
             //Arrange
@@ -113,12 +112,12 @@ namespace Chx.Tests.Unit
 
         [Theory]
         [InlineData(ActivityStatus.BadParameters, null, null)]
-        //[InlineData(ActivityStatus.Fail, @"http://uri", "a string")]
-        [InlineData(ActivityStatus.Success, @"http://uri", "response")]
-        [InlineData(ActivityStatus.Success, @"http://uri", "")]
-        [InlineData(ActivityStatus.Success, @"http://uri", "     ")]
+        [InlineData(ActivityStatus.BadParameters, @"http://uri", "a string")]
+        [InlineData(ActivityStatus.BadParameters, @"http://uri", "response")]
+        [InlineData(ActivityStatus.BadParameters, @"http://uri", "")]
+        [InlineData(ActivityStatus.BadParameters, @"http://uri", "     ")]
+        [InlineData(ActivityStatus.Success, @"http://uri", "http://uri")]
         [InlineData(ActivityStatus.Success, @"http://uri", null)]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndProxy_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string proxy)
         {
             //Arrange
@@ -142,7 +141,6 @@ namespace Chx.Tests.Unit
         [InlineData(ActivityStatus.Success, @"http://uri", "   ")]
         [InlineData(ActivityStatus.Success, @"http://uri", null)]
         [InlineData(ActivityStatus.Success, @"http://uri", "")]
-        [Trait("Unit", "HttpTest")]
         public void Run_WithUriAndBody_ReturnsValidResponse(ActivityStatus expectedStatus, string uri, string body)
         {
             //Arrange

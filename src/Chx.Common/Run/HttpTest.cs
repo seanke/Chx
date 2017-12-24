@@ -137,9 +137,14 @@ namespace Chx.Common.Run
         {
             var errors = new List<ActivityResultParameter>();
 
-            if (string.IsNullOrWhiteSpace(Uri))
+            if (!System.Uri.IsWellFormedUriString(Uri, UriKind.Absolute))
             {
                 errors.Add(new ActivityResultParameter("Could not start", "URI parameter is not valid"));
+            }
+
+            if (Proxy != null && !System.Uri.IsWellFormedUriString(Proxy, UriKind.Absolute))
+            {
+                errors.Add(new ActivityResultParameter("Could not start", "Proxy parameter is not valid"));
             }
 
             if (Timeout < 1)
