@@ -18,23 +18,24 @@ namespace Chx.Common.Run
         public WebHeaderCollection Headers { get; private set; }
         public List<string> SearchFor { get; private set; }
 
-        public HttpTest(ActivityParameterSet ParameterSet)
+        public HttpTest()
         {
             Headers = new WebHeaderCollection();
             SearchFor = new List<string>();
+        }
+
+        public ActivityResult Run(ActivityParameterSet ParameterSet)
+        {
+            return Run(new WebRequest(Uri), ParameterSet);
+        }
+
+        public ActivityResult Run(IWebRequest webRequest, ActivityParameterSet ParameterSet)
+        {
             PopulateProperties(ParameterSet);
-        }
 
-        public ActivityResult Run()
-        {
-            return Run(new WebRequest(Uri));
-        }
-
-        public ActivityResult Run(IWebRequest webRequest)
-        {
             ActivityResult result = new ActivityResult();
 
-            var errors = GetInvalidParameterErrors();
+            var errors = getInvalidParameterErrors();
             if(errors.Count > 0)
             {
                 result.Parameters.AddRange(errors);
@@ -94,7 +95,7 @@ namespace Chx.Common.Run
             return result;
         }
 
-        private void PopulateProperties(ActivityParameterSet ParameterSet)
+        public void PopulateProperties(ActivityParameterSet ParameterSet)
         {
             Uri = ParameterSet.GetFirstParameterValue("uri");
             Method = ParameterSet.GetFirstParameterValue("method");
@@ -133,7 +134,7 @@ namespace Chx.Common.Run
             }
         }
 
-        private List<ActivityResultParameter> GetInvalidParameterErrors()
+        private List<ActivityResultParameter> getInvalidParameterErrors()
         {
             var errors = new List<ActivityResultParameter>();
 

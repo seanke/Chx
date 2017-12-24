@@ -15,6 +15,7 @@ namespace Chx.Common.Run
         {
             LogEntries = new List<LogEntry>();
             Parameters = new List<ActivityResultParameter>();
+            ActivityStatus = ActivityStatus.Unknown;
         }
     }
 }

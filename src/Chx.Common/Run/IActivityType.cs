@@ -2,6 +2,6 @@
 {
     public interface IActivityType
     {
-        ActivityResult Run();
+        ActivityResult Run(ActivityParameterSet ParameterSet);
     }
 }
