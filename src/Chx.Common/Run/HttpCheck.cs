@@ -5,7 +5,7 @@ using System.Net.Security;
 
 namespace Chx.Common.Run
 {
-    public class HttpTest : IActivityType
+    public class HttpCheck : IActivityType
     {
         public string Uri { get; private set; }
         public string Method { get; private set; }
@@ -18,23 +18,29 @@ namespace Chx.Common.Run
         public WebHeaderCollection Headers { get; private set; }
         public List<string> SearchFor { get; private set; }
 
-        public HttpTest(ActivityParameterSet ParameterSet)
+        private bool hasPropertiesPopulated;
+
+        public HttpCheck()
         {
             Headers = new WebHeaderCollection();
             SearchFor = new List<string>();
+        }
+
+        public ActivityResult Run(ActivityParameterSet ParameterSet)
+        {
             PopulateProperties(ParameterSet);
+
+            return Run(new WebRequest(Uri), ParameterSet);
         }
 
-        public ActivityResult Run()
+        public ActivityResult Run(IWebRequest webRequest, ActivityParameterSet ParameterSet)
         {
-            return Run(new WebRequest(Uri));
-        }
+            if(!hasPropertiesPopulated)
+                PopulateProperties(ParameterSet);
 
-        public ActivityResult Run(IWebRequest webRequest)
-        {
             ActivityResult result = new ActivityResult();
 
-            var errors = GetInvalidParameterErrors();
+            var errors = getInvalidParameterErrors();
             if(errors.Count > 0)
             {
                 result.Parameters.AddRange(errors);
@@ -131,9 +137,11 @@ namespace Chx.Common.Run
                 if (!string.IsNullOrWhiteSpace(s))
                     SearchFor.Add(s);
             }
+
+            hasPropertiesPopulated = true;
         }
 
-        private List<ActivityResultParameter> GetInvalidParameterErrors()
+        private List<ActivityResultParameter> getInvalidParameterErrors()
         {
             var errors = new List<ActivityResultParameter>();
 

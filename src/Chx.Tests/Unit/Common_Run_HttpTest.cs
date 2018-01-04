@@ -26,11 +26,10 @@ namespace Chx.Tests.Unit
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("header", header));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -50,11 +49,10 @@ namespace Chx.Tests.Unit
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("method", method));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -73,12 +71,11 @@ namespace Chx.Tests.Unit
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("searchfor", searchFor));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
             webRequest.Setup(x => x.GetResponse()).Returns("response from a http server");
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -100,11 +97,10 @@ namespace Chx.Tests.Unit
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("timeout", timeout));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -124,12 +120,11 @@ namespace Chx.Tests.Unit
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("proxy", proxy));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
             webRequest.Setup(x => x.GetResponse()).Returns("response from a http server");
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -148,11 +143,10 @@ namespace Chx.Tests.Unit
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("body", body));
             parameterSet.Parameters.Add(new ActivityParameter("method", "post"));
-            var test = new HttpTest(parameterSet);
             var webRequest = new Mock<IWebRequest>();
 
             //Act
-            var value = test.Run(webRequest.Object);
+            var value = new HttpCheck().Run(webRequest.Object, parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);

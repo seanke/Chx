@@ -11,5 +11,13 @@ namespace Chx.Common.Run
         {
             ParameterSets = new List<ActivityParameterSet>();
         }
+
+        public ActivityResult Run()
+        {
+            var result = new ActivityResult();
+
+
+            return result;
+        }
     }
 }

@@ -21,10 +21,9 @@ namespace Chx.Tests.Integration
             var parameterSet = new ActivityParameterSet();
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("searchfor", searchFor));
-            var test = new HttpTest(parameterSet);
 
             //Act
-            var value = test.Run();
+            var value = new HttpCheck().Run(parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);
@@ -42,10 +41,9 @@ namespace Chx.Tests.Integration
             parameterSet.Parameters.Add(new ActivityParameter("uri", uri));
             parameterSet.Parameters.Add(new ActivityParameter("body", body));
             parameterSet.Parameters.Add(new ActivityParameter("method", "post"));
-            var test = new HttpTest(parameterSet);
 
             //Act
-            var value = test.Run();
+            var value = new HttpCheck().Run(parameterSet);
 
             //Assert
             Assert.Equal(expectedStatus, value.ActivityStatus);

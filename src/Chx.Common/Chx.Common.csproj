@@ -67,7 +67,7 @@
     <Compile Include="Run\Activity.cs" />
     <Compile Include="Log\LogEntry.cs" />
     <Compile Include="Run\ActivityType.cs" />
-    <Compile Include="Run\HttpTest.cs" />
+    <Compile Include="Run\HttpCheck.cs" />
     <Compile Include="Run\WebRequest.cs" />
     <Compile Include="Run\IActivityType.cs" />
     <Compile Include="Run\ActivityParameter.cs" />
