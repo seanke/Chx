@@ -1,0 +1,15 @@
+{
+  "ServerUri": "https://sonarcloud.io/",
+  "Organization": {
+    "Key": "seanke",
+    "Name": "Sean Kelly"
+  },
+  "ProjectKey": "sonar.chx",
+  "ProjectName": "Chx",
+  "Profiles": {
+    "CSharp": {
+      "ProfileKey": "AW57VFnWhmld4cSPcmAI",
+      "ProfileTimestamp": "2019-10-29T21:27:27+13:00"
+    }
+  }
+}
